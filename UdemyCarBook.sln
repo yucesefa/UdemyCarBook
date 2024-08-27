@@ -5,17 +5,23 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C56969A8-F41C-40C9-882E-12BA80C7D46F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Domain", "Core\UdemyCarBook.Domain\UdemyCarBook.Domain.csproj", "{88B467DF-80F0-4543-80C9-0A86F37EF2A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.Domain", "Core\UdemyCarBook.Domain\UdemyCarBook.Domain.csproj", "{88B467DF-80F0-4543-80C9-0A86F37EF2A0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C07C42F4-910F-4C4A-B99E-7713B53F8A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Persistence", "Infrastructure\UdemyCarBook.Persistence\UdemyCarBook.Persistence.csproj", "{20AC9180-A759-4BE4-AAE5-B72E797BB0FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.Persistence", "Infrastructure\UdemyCarBook.Persistence\UdemyCarBook.Persistence.csproj", "{20AC9180-A759-4BE4-AAE5-B72E797BB0FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6AD1A7ED-12A2-4061-9D83-FFFE8E335625}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.WebApi", "Presentation\UdemyCarBook.WebApi\UdemyCarBook.WebApi.csproj", "{512E6EF2-DF7B-4C55-B963-EA2FFCF931EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.WebApi", "Presentation\UdemyCarBook.WebApi\UdemyCarBook.WebApi.csproj", "{512E6EF2-DF7B-4C55-B963-EA2FFCF931EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.AppliCation", "Core\UdemyCarBook.AppliCation\UdemyCarBook.AppliCation.csproj", "{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyCarBook.AppliCation", "Core\UdemyCarBook.AppliCation\UdemyCarBook.AppliCation.csproj", "{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{52784B90-38C4-4458-9176-BF1BD0A48DDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.WebUI", "Frontends\UdemyCarBook.WebUI\UdemyCarBook.WebUI.csproj", "{24EEB797-7479-46D8-8648-F834F711C903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyCarBook.Dto", "Frontends\UdemyCarBook.Dto\UdemyCarBook.Dto.csproj", "{94DEC805-1629-453F-9E2F-A2FC6A74BCB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,14 @@ Global
 		{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24EEB797-7479-46D8-8648-F834F711C903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24EEB797-7479-46D8-8648-F834F711C903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24EEB797-7479-46D8-8648-F834F711C903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24EEB797-7479-46D8-8648-F834F711C903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94DEC805-1629-453F-9E2F-A2FC6A74BCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94DEC805-1629-453F-9E2F-A2FC6A74BCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94DEC805-1629-453F-9E2F-A2FC6A74BCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94DEC805-1629-453F-9E2F-A2FC6A74BCB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +62,8 @@ Global
 		{20AC9180-A759-4BE4-AAE5-B72E797BB0FC} = {C07C42F4-910F-4C4A-B99E-7713B53F8A69}
 		{512E6EF2-DF7B-4C55-B963-EA2FFCF931EF} = {6AD1A7ED-12A2-4061-9D83-FFFE8E335625}
 		{B96CDC96-F77B-4F9B-9B1F-74C35D611E2A} = {C56969A8-F41C-40C9-882E-12BA80C7D46F}
+		{24EEB797-7479-46D8-8648-F834F711C903} = {52784B90-38C4-4458-9176-BF1BD0A48DDC}
+		{94DEC805-1629-453F-9E2F-A2FC6A74BCB0} = {52784B90-38C4-4458-9176-BF1BD0A48DDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FDB497CD-4B5D-40F7-9A9F-E12357A9EA8A}
