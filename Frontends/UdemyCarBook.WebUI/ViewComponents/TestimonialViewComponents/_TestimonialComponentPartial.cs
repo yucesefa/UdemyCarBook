@@ -4,10 +4,10 @@ using UdemyCarBook.Dto.TestimonialDtos;
 
 namespace UdemyCarBook.WebUI.ViewComponents.TestimonialViewComponents
 {
-	public class _TestimonialComponantPartial : ViewComponent
+	public class _TestimonialComponentPartial : ViewComponent
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
-		public _TestimonialComponantPartial(IHttpClientFactory httpClientFactory)
+		public _TestimonialComponentPartial(IHttpClientFactory httpClientFactory)
 		{
 			_httpClientFactory = httpClientFactory;
 		}
