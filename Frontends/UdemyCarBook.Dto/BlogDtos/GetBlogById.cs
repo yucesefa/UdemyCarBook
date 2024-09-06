@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UdemyCarBook.Domain.Entities
+namespace UdemyCarBook.Dto.BlogDtos
 {
-    public class Blog
+    public class GetBlogById
     {
         public int BlogId { get; set; }
         public string Title { get; set; }
@@ -14,8 +14,6 @@ namespace UdemyCarBook.Domain.Entities
         public string CoverImageUrl { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
-        public Author Author { get; set; }
         public string Description { get; set; }
     }
 }
