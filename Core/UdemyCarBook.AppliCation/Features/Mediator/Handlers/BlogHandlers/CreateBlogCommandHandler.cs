@@ -24,6 +24,7 @@ namespace UdemyCarBook.AppliCation.Features.Mediator.Handlers.BlogHandlers
             await _repository.CreateAsync(new Blog
             {
                 AuthorId = request.AuthorId,
+                Description = request.Description,
                 CategoryId = request.CategoryId,
                 CoverImageUrl = request.CoverImageUrl,
                 CreatedDate = request.CreatedDate,

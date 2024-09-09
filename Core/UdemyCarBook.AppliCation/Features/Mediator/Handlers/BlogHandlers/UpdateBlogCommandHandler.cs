@@ -26,6 +26,7 @@ namespace UdemyCarBook.AppliCation.Features.Mediator.Handlers.BlogHandlers
             values.CoverImageUrl = request.CoverImageUrl;
             values.AuthorId = request.AuthorId;
             values.Title = request.Title;
+            values.Description = request.Description;
             values.CategoryId = request.CategoryId;
             await _repository.UpdateAsync(values);  
         }
