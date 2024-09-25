@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UdemyCarBook.Persistence.Context;
 
@@ -11,9 +12,11 @@ using UdemyCarBook.Persistence.Context;
 namespace UdemyCarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20240925192651_reservation_add_property_status")]
+    partial class reservation_add_property_status
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -591,8 +594,6 @@ namespace UdemyCarBook.Persistence.Migrations
 
                     b.HasKey("ReservationId");
 
-                    b.HasIndex("CarId");
-
                     b.HasIndex("DropOffLocationId");
 
                     b.HasIndex("PickUpLocationId");
@@ -831,12 +832,6 @@ namespace UdemyCarBook.Persistence.Migrations
 
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.Reservation", b =>
                 {
-                    b.HasOne("UdemyCarBook.Domain.Entities.Car", "Car")
-                        .WithMany("Reservations")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("UdemyCarBook.Domain.Entities.Location", "DropOffLocation")
                         .WithMany("DropOffReservation")
                         .HasForeignKey("DropOffLocationId");
@@ -844,8 +839,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.HasOne("UdemyCarBook.Domain.Entities.Location", "PickUpLocation")
                         .WithMany("PickUpReservation")
                         .HasForeignKey("PickUpLocationId");
-
-                    b.Navigation("Car");
 
                     b.Navigation("DropOffLocation");
 
@@ -889,8 +882,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.Navigation("CarPricings");
 
                     b.Navigation("RentACars");
-
-                    b.Navigation("Reservations");
 
                     b.Navigation("rentACarProcesses");
                 });
