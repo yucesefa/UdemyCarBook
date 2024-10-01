@@ -36,26 +36,26 @@ namespace UdemyCarBook.Persistence.Repositories.CarPricingRepositories
             List<CarPricingViewModel> values = new List<CarPricingViewModel>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "select * from (select (Brands.Name+ ' ' +Model) as Model,PricingId,Amount from CarPricings inner join Cars on Cars.CarId=CarPricings.CarId inner join Brands on Brands.BrandId=Cars.BrandId)\r\nas SourceTable Pivot(Sum(Amount) For PricingId in ([2],[3],[4])) as PivotTable;\r\n";
+                command.CommandText = "select * from (select (Brands.Name+ ' ' +Model) as Model,PricingId,Amount,CoverImageUrl from CarPricings inner join Cars on Cars.CarId=CarPricings.CarId inner join Brands on Brands.BrandId=Cars.BrandId)\r\nas SourceTable Pivot(Sum(Amount) For PricingId in ([2],[3],[4])) as PivotTable;\r\n";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        CarPricingViewModel viewModel = new CarPricingViewModel();
-                        Enumerable.Range(1, 3).ToList().ForEach(x =>
+                        CarPricingViewModel viewModel = new CarPricingViewModel()
                         {
-                            viewModel.Model = reader[0].ToString();
-                            if (DBNull.Value.Equals(reader[x]))
+                            Model = reader["Model"].ToString(),
+                            CoverImageUrl = reader["CoverImageUrl"].ToString(),
+                            Amounts = new List<decimal>
                             {
-                                viewModel.Amounts.Add(0);
+                                Convert.ToDecimal(reader["2"]),
+                                Convert.ToDecimal(reader["3"]),
+                                Convert.ToDecimal(reader["4"])
                             }
-                            else
-                            {
-                                viewModel.Amounts.Add(reader.GetDecimal(x));
-                            }
-                        });
+
+                          
+                        };
                         values.Add(viewModel);
                     }
                 }

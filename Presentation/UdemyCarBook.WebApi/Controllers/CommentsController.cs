@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UdemyCarBook.AppliCation.Features.Mediator.Commands.CommentCommands;
 using UdemyCarBook.AppliCation.Features.RepositoryPattern;
 using UdemyCarBook.Domain.Entities;
 
@@ -58,6 +59,18 @@ namespace UdemyCarBook.WebApi.Controllers
         {
             var value = _commentsRepository.GetCommentsByBlogId(id);
             return Ok(value);
+        }
+        [HttpGet("CommentCountByBlog")]
+        public IActionResult CommentCountByBlog(int id)
+        {
+            var value = _commentsRepository.GetCountCommentBlog(id);
+            return Ok(value);
+        }
+        [HttpPost("CreateCommentWithMediator")]
+        public async Task<IActionResult> CreateCommentWithMediator(CreateCommentCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Yorum başarıyla eklendi");
         }
     }
 }

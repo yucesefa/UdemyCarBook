@@ -1,6 +1,5 @@
-﻿@* 
-﻿@model List<ResultCommentDto>
-
+﻿@using UdemyCarBook.Dto.CommentDtos
+@model List<ResultCommentDto>
 <ul class="comment-list">
 
     @foreach(var item in Model)
@@ -16,4 +15,4 @@
             </div>
         </li>
     }
-</ul> *@
+</ul>
