@@ -29,6 +29,10 @@ using UdemyCarBook.AppliCation.Interfaces.CarFeatureInterfaces;
 using UdemyCarBook.Persistence.Repositories.CarFeatureRepositories;
 using UdemyCarBook.AppliCation.Interfaces.CarDescriptionInterfaces;
 using UdemyCarBook.Persistence.Repositories.CarDescriptionRepositories;
+using UdemyCarBook.AppliCation.Interfaces.ReviewInterfaces;
+using UdemyCarBook.Persistence.Repositories.ReviewRepositories;
+using FluentValidation.AspNetCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +49,8 @@ builder.Services.AddScoped(typeof(ITagCloudRepository),typeof(TagCloudRepository
 builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository));
 builder.Services.AddScoped(typeof(IStatisticsRepository),typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(CommentRepository<>));
+builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
+
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
 builder.Services.AddScoped<CreateAboutCommandHandler>();
@@ -84,6 +90,11 @@ builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
 
 builder.Services.AddApplicationService(builder.Configuration);
+
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+});
 
 
 builder.Services.AddControllers();
