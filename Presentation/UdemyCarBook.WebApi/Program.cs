@@ -33,9 +33,28 @@ using UdemyCarBook.AppliCation.Interfaces.ReviewInterfaces;
 using UdemyCarBook.Persistence.Repositories.ReviewRepositories;
 using FluentValidation.AspNetCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using UdemyCarBook.AppliCation.Tools;
+using UdemyCarBook.AppliCation.Interfaces.AppUserInterfaces;
+using UdemyCarBook.Persistence.Repositories.AppUserRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidAudience = JwtTokenDefaults.ValidAudience,
+        ValidIssuer = JwtTokenDefaults.ValidIssuer,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
 // Add services to the container.
 
 builder.Services.AddScoped<CarBookContext>();
@@ -50,6 +69,7 @@ builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository
 builder.Services.AddScoped(typeof(IStatisticsRepository),typeof(StatisticsRepository));
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(CommentRepository<>));
 builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
+builder.Services.AddScoped(typeof(IAppUserRepository), typeof(AppUserRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -112,6 +132,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
